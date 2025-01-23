@@ -1,6 +1,6 @@
 #! /bin/bash
 # Default values for directory_name, search_patterns and output_file
-directory_name="$(pwd)"
+directory_name=$(pwd)
 search_patterns=()
 output_file="$(pwd)/search.txt"
 
@@ -73,7 +73,7 @@ for search_pattern in "${search_patterns[@]}"; do
     echo "==============" >> $output_file
 
     # Get converted pattern
-    conv_pattern="${search_pattern//\*/[^,]*}"
+    conv_pattern="${search_pattern//\*/[^,]\+}"
     conv_pattern="${conv_pattern//\?/[^,]}"
     conv_pattern="[^,[:space:]]*$conv_pattern[^,]*"
 
